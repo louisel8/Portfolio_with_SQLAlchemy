@@ -1,0 +1,62 @@
+{% extends 'general_layout.html' %}
+
+{% block content %}
+<section class="header">
+    <h1>New Project</h1>
+</section>
+
+<section id="form">
+    <form id="project-form" method="POST" action="{{ url_for('add_new_project') }}">
+        {{ form.csrf_token }}
+        <label for="title">Project Title:</label>
+        {{ form.title(class="form-control", placeholder="Project Name (required)") }}
+        {% if form.title.errors %}
+        <div class="error-message">
+            {% for error in form.title.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if repeat_project_error %}
+        <div class="error-message">
+            <p>{{ repeat_project_error }}</p>
+        </div>
+        {% endif %}
+
+        <label for="date">Completion Date:</label>
+        {{ form.date(class="form-control", placeholder="A valid date (required)") }}
+        {% if form.date.errors %}
+        <div class="error-message">
+            {% for error in form.date.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if date_format_error %}
+        <div class="error-message">
+            <p>{{ date_format_error }}</p>
+        </div>
+        {% endif %}
+
+        <label for="description">Description:</label>
+        {{ form.description(class="form-control", placeholder="Description (required)") }}
+
+        <label for="skills">Skills:</label>
+        {{ form.skills(class="form-control", placeholder="Skills (required)") }}
+
+        <label for="github_link">GitHub Link:</label>
+        {{ form.github_link(class="form-control", placeholder="GitHub Link") }}
+        <div>
+            <a href="#" onclick="clearForm(event)" class="btn btn-secondary hover-effect">Cancel</a>
+            <button type="submit" class="btn btn-project-submit hover-effect">Submit</button>
+        </div>
+    </form>
+</section>
+
+<script>
+    function clearForm(event) {
+        event.preventDefault();
+        document.getElementById("project-form").reset();
+    }
+</script>
+{% endblock %}
