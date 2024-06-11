@@ -1,10 +1,22 @@
 READEME
 
-Project:
+- Project:
 
 Portfolio with SQLAlchemy
 
-What about it:
+- How to run this locally:
+
+a) create a virtual environment via python3 -m venv env
+
+b) activate the virtual environment via: 
+source ./env/bin/activate (Unix/Linux/Mac) or
+.\env\Scripts\activate (Windows)
+
+c) install dependencies via pip install -r requirements.txt
+
+d) run the main file via python3 app.py
+
+- What about it:
 
 This is a simple web application using HTML, CSS, and Flask, 
 a popular framework for Python web development. 
@@ -23,7 +35,7 @@ the page displays a reminder message and prompts the user to input new informati
 
 The About, Skills, and Contact pages render different sections of the about_me page to display relevant information.
 
-During the process, I have learnt:
+- During the process, I have learnt:
 
 how to connect database, store the data and display the information;
 how to use the static directory and how to use the repeat use layout contents;

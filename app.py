@@ -9,8 +9,12 @@ from models import app, db, Project, ProjectForm
 
 @app.route("/")
 def index():
+    return render_template('index.html')
+
+@app.route("/allprojects")
+def all_projects():
     projects = Project.query.all()
-    return render_template('index.html', projects=projects)
+    return render_template('allprojects.html', projects=projects)
 
 
 @app.route('/projects/new', methods=['GET', 'POST'])
@@ -44,7 +48,7 @@ def add_new_project():
             )
             db.session.add(new_project)
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('all_projects'))
 
     return render_template('addproject.html', form=form, repeat_project_error=repeat_project_error, date_format_error=date_format_error)
 
@@ -101,9 +105,9 @@ def delete_project(id):
     return redirect(url_for("index"))
 
 
-@app.route("/aboutme")
+@app.route("/allprojects")
 def about_me():
-    return render_template("about_me.html")
+    return render_template("allprojects.html")
 
 
 @app.errorhandler(404)
