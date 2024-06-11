@@ -86,7 +86,7 @@ def edit_project(id):
             form.populate_obj(project)
             date = form.date.data
             db.session.commit()
-            return redirect(url_for("index"))
+            return redirect(url_for("all_projects"))
 
     return render_template("editproject.html", form=form, project=project, repeat_project_error=repeat_project_error, date_format_error=date_format_error)
 
